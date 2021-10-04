@@ -1,5 +1,20 @@
 "use strict";
 
+const dishes = [{
+    id: 1,
+    name: 'Burger and fries',
+    price: 12
+},{
+    id: 2,
+    name: 'Pizza',
+    price: 15
+
+},{
+    id: 3,
+    name: 'Spaghetti',
+    price: 10
+}]
+
 window.onload = function () {
     console.log('Loaded');
 
@@ -10,7 +25,7 @@ window.onload = function () {
         let orderDetails = {
             name: document.getElementById('nameInput').value,
             mail: document.getElementById('emailInput').value,
-            order: document.getElementById('orderInput').value
+            order: document.querySelector('input[name="dish"]:checked').value
         }
         document.getElementById('message').innerHTML = printOrder(orderDetails);
     });
