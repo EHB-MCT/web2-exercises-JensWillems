@@ -2,11 +2,11 @@
 
 const dishes = [{
     id: 1,
-    name: 'Burger and fries',
+    name: 'Pizza',
     price: 12
 },{
     id: 2,
-    name: 'Pizza',
+    name: 'Lasagne',
     price: 15
 
 },{
