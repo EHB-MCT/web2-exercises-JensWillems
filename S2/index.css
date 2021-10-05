@@ -13,8 +13,17 @@
 
 #pokeCard {
     width: 25%;
-    background-color: #928888;
+    border: 1px solid #000000;
+    background-color: #c2b5b5;
     margin: 10px;
     padding: 20px;
     font-size: 20px;
+}
+
+p {
+    text-align: center;
+}
+
+img {
+    width: 100%;
 }
