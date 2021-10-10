@@ -1,8 +1,11 @@
 "use strict";
+
+import Team from "./team.js";
+
 let list = [];
 let pokemons = [];
 
-import Team from "./team.js";
+let team2 = new Team();
 
 
 getPokemon();
@@ -41,17 +44,27 @@ window.onload = function () {
                 // console.log(type.type.name);
                 return ` ${type.type.name}`;
             }))}</p>
-            <button id="${pokemon.name}" class = "pokeButton">add to your team</button>
+            <a href= "#" id="${pokemon.id}" class="btn btn-primary" > Add to team </a>
         </div>`;
 
         });
 
         document.getElementById('pokemons').innerHTML = htmlstring;
-        document.getElementsByClassName('pokeButton').forEach((element) => {
-            element.addEventListener("click", (e) => {
-                console.log(e.target.id);
-                console.log(team1);
+        document.querySelectorAll('.btn').forEach(item => {
+            item.addEventListener('click', event => {
+                let id = event.target.id
+                console.log(id);
+                let teamPokemon = pokemons.find(id);
+                console.log(teamPokemon);
             })
         })
+
+        // document.getElementsByClassName('pokeButton').forEach((element) => {
+        //     element.addEventListener("click", (e) => {
+        //         console.log(e.target.id);
+        //         console.log(team1);
+        //         console.log(pokemon.name)
+        //     })
+        // })
     }
 }
