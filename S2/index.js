@@ -6,8 +6,10 @@ let list = [];
 let pokemons = [];
 let teamPokemon = [];
 
-let team1 = new Team("Humbeek", "Jens", []);
+let team1 = new Team("Humbeek", "Jens", teamPokemon);
+
 team1.describe();
+
 
 
 getPokemon();
@@ -57,20 +59,12 @@ window.onload = function () {
                     .then(response => response.json())
                     .then(data => {
                         // console.log(data.results[id - 1])
-                        teamPokemon.push(data.results[id - 1].name);
-
-                        console.log(teamPokemon)
+                        team1.roster.push(data.results[id - 1].name);
+                        console.log(team1)
+                        team1.describe();
+                        // console.log(teamPokemon)
                     });
-                // console.log(team2);
-
             })
         })
-        // document.getElementsByClassName('pokeButton').forEach((element) => {
-        //     element.addEventListener("click", (e) => {
-        //         console.log(e.target.id);
-        //         console.log(team1);
-        //         console.log(pokemon.name)
-        //     })
-        // })
     }
 }
