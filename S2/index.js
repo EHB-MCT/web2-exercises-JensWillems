@@ -10,7 +10,7 @@ let team2 = new Team();
 
 getPokemon();
 
-let team1 = new Team("cool", "Pedro", ["1", "2"]);
+let team1 = new Team("Humbeek", "Jens", []);
 team1.describe();
 
 function getPokemon() {
@@ -53,12 +53,20 @@ window.onload = function () {
         document.querySelectorAll('.btn').forEach(item => {
             item.addEventListener('click', event => {
                 let id = event.target.id
-                console.log(id);
-                let teamPokemon = pokemons.find(id);
-                console.log(teamPokemon);
+                // console.log(id);
+                fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
+                    .then(response => response.json())
+                    .then(data => {
+                        // console.log(data)
+                        // console.log(data.results[id - 1])
+                        team2 + data.results[id - 1].name
+                        let teamPokemon = data.results[id - 1].name
+                        console.log(teamPokemon)
+                    });
+
+                console.log(team2)
             })
         })
-
         // document.getElementsByClassName('pokeButton').forEach((element) => {
         //     element.addEventListener("click", (e) => {
         //         console.log(e.target.id);
