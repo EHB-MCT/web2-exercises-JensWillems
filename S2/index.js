@@ -4,14 +4,13 @@ import Team from "./team.js";
 
 let list = [];
 let pokemons = [];
-
-let team2 = new Team();
-
-
-getPokemon();
+let teamPokemon = [];
 
 let team1 = new Team("Humbeek", "Jens", []);
 team1.describe();
+
+
+getPokemon();
 
 function getPokemon() {
     fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
@@ -57,14 +56,13 @@ window.onload = function () {
                 fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
                     .then(response => response.json())
                     .then(data => {
-                        // console.log(data)
                         // console.log(data.results[id - 1])
-                        team2 + data.results[id - 1].name
-                        let teamPokemon = data.results[id - 1].name
+                        teamPokemon.push(data.results[id - 1].name);
+
                         console.log(teamPokemon)
                     });
+                // console.log(team2);
 
-                console.log(team2)
             })
         })
         // document.getElementsByClassName('pokeButton').forEach((element) => {
