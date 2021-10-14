@@ -1,50 +1,43 @@
 "use strict";
 
 let random = 0;
-getPlayerNumber();
-
-
-
 
 function getPlayerNumber() {
-    document.getElementById('form').addEventListener('click', e => {
+    getRandomNumber();
+    document.getElementById('btn').addEventListener('click', e => {
         e.preventDefault();
-        getRandomNumber();
-        console.log(random)
+        // console.log(random)
         compareNumber(document.getElementById('input').value).then(
             result => {
-                alert("You have guessed the mystery number!")
+                document.getElementById('message').innerHTML = "U guessed right!"
                 console.log("good")
             },
             error => {
-                alert("")
+                document.getElementById('message').innerHTML = "Wrong!"
+                console.log(error)
                 console.log("wrong")
             }
         )
         let playerInput = document.getElementById('input').value;
         // document.getElementById('message').innerText = random;
     })
-
-
 };
 
 function getRandomNumber() {
     random = Math.floor(Math.random() * 20) + 1;
-    return random;
     // console.log(random);
 };
 
 function compareNumber(playerInput) {
     return new Promise((resolve, reject) => {
+        console.log(random)
         if (playerInput > random) {
-            reject("to high")
-
+            reject("too high")
         } else if (playerInput < random) {
-            reject("Whoops!")
+            reject("too low")
         } else if (playerInput == random) {
             resolve("U guessed the mystery number")
         }
     })
-
-
 };
+getPlayerNumber();
