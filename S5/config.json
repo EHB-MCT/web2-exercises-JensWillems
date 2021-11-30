@@ -1,0 +1,7 @@
+{
+    "baseUrl": "mongodb+srv://<username>:<password>@clustername.mongodb.net/test?retryWrites=true&w=majority&useNewUrlParser=true&useUnifiedTopology=true",
+    "username": "exampleusername",
+    "pw": "examplepw",
+    "db": "session5",
+    "finalUrl": "mongodb+srv://admin:admin@clustername.mongodb.net/session5?retryWrites=true&w=majority&useNewUrlParser=true&useUnifiedTopology=true"
+}

@@ -1,6 +1,13 @@
 const express = require('express');
 const fs = require('fs/promises');
 const bodyParser = require('body-parser');
+const {
+    MongoClient
+} = require('mongodb');
+const config = require('./config.json');
+
+//Create mongo client to use
+const client = new MongoClient(config.finalUrl);
 
 const app = express();
 const port = 1337;
@@ -13,16 +20,23 @@ app.get('/', (req, res) => {
 });
 
 
-// return all boardgames
+// return all boardgames form the database
 app.get('/boardgames', async (req, res) => {
 
     try {
-        //Read the file
-        let data = await fs.readFile('data/boardgames.json');
-        //send back the file
-        res.status(200).send(JSON.parse(data));
+        //connect to the db
+        await client.connect();
+        //retrieve the boardgame collection data
+        const bgs = client.db('session5').collection('boardgames')
+            .find({}).toArray();
+
+        //send back the data with response
+        res.status(200).send(bgs);
     } catch (error) {
-        res.status(500).send('file could not be read! Try again later...');
+        res.status(500).send({
+            error: 'Something went wrong',
+            value: error
+        });
     }
 });
 
